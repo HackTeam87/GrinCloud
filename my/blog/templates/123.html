@@ -1,0 +1,143 @@
+<div class="row">
+        <div class="col-lg-12" align="center">
+            <ul class="pagination">
+                {% if post.has_previous %}
+                    <li class="arrow"><a href="/cat/{{ category.slug }}?page={{ pag }}{{ post.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for pag in post.paginator.page_range %}
+                    {% if pag == post.number %}
+                        <li class="active"><a href="/cat/{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% else %}
+                        <li><a href="/cat/{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if post.has_next %}
+                    <li class="arrow"><a href="/cat/{{ category.slug }}?page={{ pag }}{{ post.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+------------------------------------------------------------------------------------------------------------------------
+
+{% extends 'base.html' %}
+{% load static %}
+ <link rel="stylesheet" type="text/css" href="{% static 'css/blogs.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    {% block content %}
+
+         <div class="list-group" align="left">
+  <a href="/" class="list-group-item active list-group-item-success">
+  Дополнительные страницы
+  </a>
+      <a href="/blog/" class="list-group-item" data-toggle="tooltip" title="Блог на моем практикуме!">Практикум извлечение записи из базы данных по id - Блог!</a>
+      <a href="/info/order/" class="list-group-item" data-toggle="tooltip" title="Работа с базой данных">Выборка из базы</a>
+      <a href="/forms/" class="list-group-item" data-toggle="tooltip" title="Очень простая форма">Форма1</a>
+      <a href="/forms2/" class="list-group-item" data-toggle="tooltip" title="Чуть сложнее форма">Форма2</a>
+      <a href="/forms3/" class="list-group-item" data-toggle="tooltip" title="Совсем сложная форма">Форма3</a>
+      <a href="/blog/time/1/" class="list-group-item" data-toggle="tooltip" title="Вывод даты и времени">Дата и время - пример</a>
+      <a href="/blog/gtx/" class="list-group-item" data-toggle="tooltip" title="Всякие разнае страницы!">Просто страница! </a>
+</div>
+ <div class="list-group" align="left">
+  <a href="/" class="list-group-item active list-group-item-success">
+  Дополнительные страницы
+  </a>
+      <a href="/blog/" class="list-group-item" data-toggle="tooltip" title="Блог на моем практикуме!">Практикум извлечение записи из базы данных по id - Блог!</a>
+      <a href="/info/order/" class="list-group-item" data-toggle="tooltip" title="Работа с базой данных">Выборка из базы</a>
+      <a href="/forms/" class="list-group-item" data-toggle="tooltip" title="Очень простая форма">Форма1</a>
+      <a href="/forms2/" class="list-group-item" data-toggle="tooltip" title="Чуть сложнее форма">Форма2</a>
+      <a href="/forms3/" class="list-group-item" data-toggle="tooltip" title="Совсем сложная форма">Форма3</a>
+      <a href="/blog/time/1/" class="list-group-item" data-toggle="tooltip" title="Вывод даты и времени">Дата и время - пример</a>
+      <a href="/blog/gtx/" class="list-group-item" data-toggle="tooltip" title="Всякие разнае страницы!">Просто страница! </a>
+</div>
+ <div class="list-group" align="left">
+  <a href="/" class="list-group-item active list-group-item-success">
+  Дополнительные страницы
+  </a>
+      <a href="/blog/" class="list-group-item" data-toggle="tooltip" title="Блог на моем практикуме!">Практикум извлечение записи из базы данных по id - Блог!</a>
+      <a href="/info/order/" class="list-group-item" data-toggle="tooltip" title="Работа с базой данных">Выборка из базы</a>
+      <a href="/forms/" class="list-group-item" data-toggle="tooltip" title="Очень простая форма">Форма1</a>
+      <a href="/forms2/" class="list-group-item" data-toggle="tooltip" title="Чуть сложнее форма">Форма2</a>
+      <a href="/forms3/" class="list-group-item" data-toggle="tooltip" title="Совсем сложная форма">Форма3</a>
+      <a href="/blog/time/1/" class="list-group-item" data-toggle="tooltip" title="Вывод даты и времени">Дата и время - пример</a>
+      <a href="/blog/gtx/" class="list-group-item" data-toggle="tooltip" title="Всякие разнае страницы!">Просто страница! </a>
+</div>
+{% for post in posts %}
+    <div class="contents">
+            <div >
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+            </div>
+
+    </div>
+
+    <div class="post">
+                <div class="date"  >
+                    {{ post.published_date }}
+                    <h3>{{ post.author }}</h3>
+                </div>
+            </div >
+
+<img src="{{ post.image }} "width="300 px" >
+
+
+    <div class="video">
+<iframe width="480" height="275" src="{{ post.video }}" frameborder="0" allowfullscreen></iframe>
+
+
+</div>
+
+
+<div class="grin"><h2> hi grin</h2></div>
+
+{% endfor %}
+
+
+
+    {% endblock content %}
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+<div class="panel-body well well-lg">
+<p><img alt="" src="/media/uploads/blazer/2016/05/17/logo_youtube2.png" style="margin: 10px; float: left; width: 150px; height: 150px;">
+{% for post in posts %}
+<img src="{{ post.image }} "class="pls" >
+    {% endfor %}
+<a href="/blog/varianty-vstavki-video-youtube-na-django-sajt/"><button type="button" class="btn btn-primary btn-xs">Читать далее &gt;&gt;&gt;</button></a>
+</div>
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+          <div class="container centered">
+          <div class="row"></div>
+      <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Увеличить</button>
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title">Заголовок Окна</h4>
+                </div>
+
+                <div class="modal-body">
+                    {% for post in posts %}
+                <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4>
+                <img src="{{ post.image.url }}" width="55%" >
+                {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

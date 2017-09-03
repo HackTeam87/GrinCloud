@@ -1,0 +1,79 @@
+body {
+    font: 14px 'Verdana';
+    margin: 0;
+    padding: 0;
+}
+hr{
+    color: white;
+}
+ul {
+    display: block;
+    margin-left:-35px;
+    padding: 0;
+    list-style: none;
+}
+ul:after {
+    display: block;
+    content: ' ';
+    clear: both;
+    float: none;
+}
+ul.menu > li {
+    float: left;
+    position: relative;
+}
+ul.menu > li > a {
+    display: block;
+    padding: 0 1px;
+    color: white;
+    text-decoration: none;
+}
+ul.menu > li > a:hover {
+    color: black;
+}
+ul.submenu {
+    display: none;
+    position: absolute;
+    min-height: 30%;
+    width:15em;
+    top: 32px;
+    left: 0;
+    background-color: tomato;
+    border-radius: 8px;
+
+}
+
+ul.submenu > li {
+    display: block;
+}
+ul.submenu > li > a {
+    display: inline-block;
+    padding: 3px;
+    color: black;
+
+    font-size: 1.5em;
+    font-family: "Times New Roman";
+    text-decoration: none;
+}
+ul.submenu > li > a:hover {
+    text-decoration: none;
+    font-size: 1.8em;
+    background-color: white;
+    border-radius: 8px;
+
+
+}
+
+ul.menu > li:hover > ul.submenu {
+    display: block;
+    transition: 1s;
+}
+ul.menu li:hover{
+opacity: 0.7;
+}
+
+
+@media screen and (max-width: 475px) {
+    ul{margin-left:-5px;}
+
+}

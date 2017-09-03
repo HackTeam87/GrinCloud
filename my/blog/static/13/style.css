@@ -1,0 +1,39 @@
+html body{
+	
+}
+
+.block{
+	height: 100px;
+	width: 100%;
+	background: coral;
+	
+}
+
+.container{
+	display: grid;
+	grid-template-columns:1fr;
+	grid-column-gap:5px;
+	grid-row-gap:5px;
+}
+
+img{
+	height: 100px;
+}
+
+@media screen and (min-width: 320px){
+	.container{
+	display: grid;
+	grid-template-columns:1fr 1fr;
+	grid-column-gap:5px;
+	grid-row-gap:5px;
+	}
+}
+
+@media screen and (min-width: 700px){
+	.container{
+	display: grid;
+	grid-template-columns:1fr 3fr 1fr;
+	grid-column-gap:5px;
+	grid-row-gap:5px;
+	}
+}

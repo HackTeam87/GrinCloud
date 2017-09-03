@@ -1,0 +1,183 @@
+html , body{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../img/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+
+
+}
+
+.header{
+    background-color: tomato;
+    height: 80px;
+    margin: 0 20%;
+    margin-bottom: 0px;
+    border: solid 1px black;
+    padding: 10px 10px 10px 20px;
+
+
+}
+.header li{
+
+    display: inline-block;
+    margin-left: 50px;
+
+}
+
+.header li a{
+    font-size: 35px;
+    display: inline;
+    text-decoration: none;
+    color: white;
+    font-family: "Vladimir Script";
+
+
+}
+
+.wrapper{
+    min-width: 275px;
+    border: solid 1px black;
+    margin: 0 20%;
+    background-color: white;
+
+}
+
+
+
+
+.container{
+
+
+    min-height: 250px;
+    margin:calc(100% / 90 );
+
+
+}
+
+.inf{
+
+    background-color: black;
+    min-height: 400px;
+    border: solid 1px snow;
+    border-radius: 25px;
+
+
+
+    /*margin:calc(100% / 20 - 20px);*/
+
+
+
+}
+.pls{
+    position: relative;
+    top: 35%;
+    width: 230px;
+    padding: 2px;
+    float: right;
+
+}
+p
+{ color: white }
+a{ text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: tomato;
+}
+
+.footer{
+    height: 100px;
+    background-color: tomato;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-family: "Vladimir Script";
+    border: solid 1px black ;
+
+}
+@media screen and (max-width: 1075px) {
+    .header{min-height: 80px;margin: 0 0%;}
+    .wrapper{margin: 0 0px;}
+
+}
+
+@media screen and (max-width: 725px) {
+    .header{min-height: 10%;margin: 0 0%;}
+    .wrapper{margin: 0 0px;}
+    .header li a {
+        display: block;
+    }
+
+    }
+
+@media screen and (max-width: 575px) {
+    .header{min-height: 17%; min-width:150px;margin: 0 0%;}
+
+    .header li{
+        margin-left: 0px;
+        display: block;
+    }
+    .header li a {
+        font-size: 27px;
+
+    }
+
+    .wrapper {
+        min-width: 150px;
+        margin: 0 0%;
+        background-color: tomato;
+    }
+}
+
+
+@media screen and (max-width: 475px) {
+    .header{min-height: 10%; min-width:150px;margin: 0 0%;}
+
+    .header li{
+        margin-left: 0px;
+    }
+    .header li  {
+        display: block;
+    }
+
+    .wrapper {
+        min-width: 150px;
+        margin: 0 0%;
+        background-color: black;
+    }
+}
+
+
+/*dropmenu*/
+
+ul.dropdown li { position: relative; }
+ ul.dropdown,
+ ul.dropdown-inside {
+ list-style-type: none;
+ padding: 0;
+ }
+ ul.dropdown-inside {
+ position: absolute;
+ left: -9999px;
+ }
+ ul.dropdown li.dropdown-top {
+ display: inline;
+ float: left;
+ margin: 0 1px 0 0;
+ }
+ ul.dropdown li.dropdown-top a {
+ padding: 3px 10px 4px;
+ display: block;
+ }
+ ul.dropdown a.dropdown-top { background: #efefef; }
+ ul.dropdown a.dropdown-top:hover { padding: 2px 10px 5px; }
+ ul.dropdown li.dropdown-top:hover .dropdown-inside {
+ display: block;
+ left: 0;
+ }
+ ul.dropdown .dropdown-inside { background: #fff; }
+ ul.dropdown .dropdown-inside a:hover { background: #efefef; }

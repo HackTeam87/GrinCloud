@@ -1,0 +1,63 @@
+
+{% load static %}
+
+    <html>
+        <head>
+
+            <title>Grin blog</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link rel="stylesheet" href="{% static 'css/stest.css' %}">
+            <link rel="stylesheet" href="{% static 'css/submenu.css' %}">
+        </head>
+
+ {% block content %}
+
+        <body>
+        <div class="header">
+
+            <ul class="menu">
+    <li><a href=#>Category</a>
+        <ul class="submenu">
+            <li><a href="http://172.16.3.124:80/kat/int">Internet </a></li>
+            <li><a href="http://172.16.3.124:80/kat/ktv">Ktv</a></li>
+            <li><a href="http://172.16.3.124:80/kat/dom">Domofon</a></li>
+
+<hr>
+                <li><a href="/">Contacts</a> </li>
+            <li><a href="/">About Me</a> </li>
+
+        </ul>
+    </li>
+
+
+
+
+        </div>
+
+        <div class="wrapper">
+
+        <div class="container">
+
+{% for post in posts %}
+
+    <div class="inf"><h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+
+<img src="{{ post.image }} "class="pls" >
+        <hr>
+    <p>{{ post.text|linebreaksbr }}</p>
+    <hr>
+    </div>
+
+{% endfor %}
+
+
+        </div>
+        <div class="footer">Bigfoot</div>
+        </div>
+
+
+        </body>
+
+{% endblock content %}
+    </html>

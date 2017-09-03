@@ -1,0 +1,40 @@
+html body{
+	background-color:#efd8f3;
+}
+table{
+	border: solid 3px grey;
+    border-spacing: 0px 0px;
+    width: 33%; /* Ширина таблицы */
+    
+}
+td{
+	border: solid 1px grey;
+
+}
+h4{
+	text-align: center;
+}
+
+p{
+	text-align: left;
+	color: darkblue;
+	margin-left: 15px;
+}
+
+#price{
+	text-align: right;
+	margin-right: 8px;
+}
+#select1{
+	
+}
+
+.centered{
+	
+}
+
+input{
+	margin: 1px;
+	padding: 3px;
+}
+

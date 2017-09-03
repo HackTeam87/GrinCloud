@@ -1,0 +1,19 @@
+html,body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../img/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+}
+
+
+url(r'^$', views.post_list, name='post_list'),
+    url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
+    url(r'^post/new/$', views.post_new, name='post_new'),
+    url(r'^post/(?P<pk>[0-9]+)/edit/$', views.editor, name='post_edit'),
+    url(r'^home/$', views.home, name='home'),
+    url(r'^cat/(?P<slug>[-\w]+)/$', views.category, name='cat'),

@@ -1,0 +1,145 @@
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Life</title>
+
+    <!-- Bootstrap -->
+      <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'bootstrap/css/main.css' %}">
+      <link rel="stylesheet" href="{% static 'bootstrap/css/font-awesome.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/modalwindow.css' %}">
+
+
+  </head>
+  <body>
+   <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+             <a class="navbar-brand" href="/">T<i class="fa fa-heartbeat">MA</i> </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li ><a href="http://194.28.102.20:8080/kat/winter">Зима</a> </li>
+              <li ><a href="http://194.28.102.20:8080/kat/spring">Весна</a> </li>
+              <li ><a href="http://194.28.102.20:8080/kat/summer">Лето</a> </li>
+              <li ><a href="http://194.28.102.20:8080/kat/autumn">Осень</a> </li>
+              <li class="active"><a href="http://194.28.102.20:8080/car">Все Сезоны</a> </li>
+              <li ><a href="/"> <i class="fa fa-arrows-alt" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+   <div class="container centered">
+       <div class="row">
+        <div class="col-md-12 ">
+
+        {% for post in posts %}
+<!-- Модальное окно №1 -->
+   <a href="#x" class="overlay" id="win1"></a>
+   <div class="popup">
+       <!-- Ссылки на вызов модальных окон-->
+  <img src="{{ post.image.url }} "height="120%"  width="130%"  >
+       {{ post.title }}
+
+    <a class="close"title="Закрыть" href="#close"></a>
+    </div>
+
+{% endfor %}
+
+
+
+         <ul class="pagination pagination-sm ">
+                {% if post.has_previous %}
+                    <li class="arrow"><a href="{{ category.slug }}?page={{ pag }}{{ post.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for pag in post.paginator.page_range %}
+                    {% if pag == post.number %}
+                        <li class="active"><a href="{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% else %}
+                        <li><a href="{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if post.has_next %}
+                    <li class="arrow"><a href="{{ category.slug }}?page={{ pag }}{{ post.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+       {% for post in posts %}
+
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+
+     <a href="#win1" ><img src="{{ post.image.url }} "></a>
+     <p>{% autoescape off %}{{ post.text|linebreaksbr }}{% endautoescape %}</p>
+{% endfor %}
+
+<br>
+            <ul class="pagination pagination-sm ">
+                {% if post.has_previous %}
+                    <li class="arrow"><a href="{{ category.slug }}?page={{ pag }}{{ post.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for pag in post.paginator.page_range %}
+                    {% if pag == post.number %}
+                        <li class="active"><a href="{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% else %}
+                        <li><a href="{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if post.has_next %}
+                    <li class="arrow"><a href="{{ category.slug }}?page={{ pag }}{{ post.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+       </div>
+   </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="../static/bootstrap/js/jquery-3.2.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../static/bootstrap/js/bootstrap.js"></script>
+
+<div id="red">
+  <div class="container">
+    <div class="row centered">
+    <div class="col-lg-8 col-lg-offset-2">
+    <h4>Разработка сайтов </h4>
+    <p>"If you want to go fast, go alone.If you want to go far, go together."</p>
+
+  </div>
+</div>
+</div>
+
+<div id="footer">
+  <div class="container centered">
+    <div class="row ">
+    <a href="/"><i class="fa fa-twitter"></i></a>
+    <a href="/"><i class="fa fa-facebook"></i></a>
+    <a href="/"><i class="fa fa-vk"></i></a>
+
+    </div>
+  </div>
+</div>
+</div>
+  </body>
+</html>
+{%endblock %}

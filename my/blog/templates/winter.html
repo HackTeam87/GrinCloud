@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>mymy</title>
+
+    <!-- Bootstrap -->
+      <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'bootstrap/css/main.css' %}">
+      <link rel="stylesheet" href="{% static 'bootstrap/css/font-awesome.min.css' %}">
+
+
+  </head>
+  <body>
+   <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+             <a class="navbar-brand" href="/">GR<i class="fa fa-circle">IN</i> </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li ><a href="/">Зима</a> </li>
+              <li ><a href="/">Весна</a> </li>
+              <li ><a href="/">Лето</a> </li>
+              <li ><a href="/">Осень</a> </li>
+              <li class="active"><a href="/">Все Сезоны</a> </li>
+              <li ><a href="/"> <i class="fa fa-arrows-alt" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+   <div class="container">
+       <div class="centered">
+        <div class="col-md-12 ">
+            {% for post in posts %}
+            <h4>{{ post.title }}</h4>
+                <img src="{{ post.image }} "class="pls" >
+             <img src="../static/bootstrap/img/2.jpg">
+            {% endfor %}
+
+
+
+        </div>
+       </div>
+   </div>
+
+  {% block content %}
+   {% for post in posts %}
+<!-- Модальное окно №1 -->
+   <a href="#x" class="overlay" id="win1"></a>
+   <div class="popup">
+       <!-- Ссылки на вызов модальных окон-->
+  <img src="{{ post.image.url }} "height="110%"  width="140%"  >
+       :)
+
+    <a class="close"title="Закрыть" href="#close"></a>
+    </div>
+
+{% endfor %}
+
+    <div class="pag">
+            <ul class="pagination">
+                {% if post.has_previous %}
+                    <li class="arrow"><a href="{{ category.slug }}?page={{ pag }}{{ post.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for pag in post.paginator.page_range %}
+                    {% if pag == post.number %}
+                        <li class="active"><a href="{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% else %}
+                        <li><a href="{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if post.has_next %}
+                    <li class="arrow"><a href="{{ category.slug }}?page={{ pag }}{{ post.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+           </div>
+
+
+
+{% for post in posts %}
+
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+
+     <a href="#win1" ><img src="{{ post.image.url }} " height="50%"  ></a>
+     <p>{% autoescape off %}{{ post.text|linebreaksbr }}{% endautoescape %}</p>
+{% endfor %}
+
+{% for song in songs %}
+		<ul class="audio">
+		<li><a href="{{ song.audio }}"class="ssilka"><h4 class="id">{{ song.id }}...{{ song.published_date|date:"d E_H.m.s" }}</h4>{{ song.trek }}</a> <a href="{{ song.audio }}"><br> <img src="{{ song.image  }}" width="50px"/></a></li>
+        <hr>
+        </ul>
+{% endfor %}
+
+</div>
+           <div class="pag">
+            <ul class="pagination">
+                {% if post.has_previous %}
+                    <li class="arrow"><a href="{{ category.slug }}?page={{ pag }}{{ post.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for pag in post.paginator.page_range %}
+                    {% if pag == post.number %}
+                        <li class="active"><a href="{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% else %}
+                        <li><a href="{{ category.slug }}?page={{ pag }}">{{ pag }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if post.has_next %}
+                    <li class="arrow"><a href="{{ category.slug }}?page={{ pag }}{{ post.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+           </div>
+</div>
+    {%endblock %}
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="../static/bootstrap/js/jquery-3.2.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../static/bootstrap/js/bootstrap.js"></script>
+  </body>
+</html>

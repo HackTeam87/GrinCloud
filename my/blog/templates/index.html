@@ -1,0 +1,111 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Life</title>
+
+    <!-- Bootstrap -->
+      <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'bootstrap/css/main.css' %}">
+      <link rel="stylesheet" href="{% static 'bootstrap/css/font-awesome.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/modalwindow.css' %}">
+
+
+
+    
+  </head>
+  <body>
+   <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+             <a class="navbar-brand" href="/">GR<i class="fa fa-heart">IN</i> </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li ><a href="http://194.28.102.20:8080/kat/winter">Зима</a> </li>
+              <li ><a href="http://194.28.102.20:8080/kat/spring">Весна</a> </li>
+              <li ><a href="http://194.28.102.20:8080/kat/summer">Лето</a> </li>
+              <li ><a href="http://194.28.102.20:8080/kat/autumn">Осень</a> </li>
+              <li class="active"><a href="http://194.28.102.20:8080/car">Все Сезоны</a> </li>
+              <li ><a href="/"> <i class="fa fa-arrows-alt" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+   <div class="container">
+       <div class="centered">
+        <div class="col-md-12 ">
+            {% for post in posts %}
+            <h4>{{ post.title }}</h4>
+                <img src="{{ post.image }} "class="pls" >
+             <img src="../static/bootstrap/img/2.jpg">
+            {% endfor %}
+
+        </div>
+       </div>
+   </div>
+
+
+<div class="container centered">
+
+ <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Всплывающее Окно</button>
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title">Заголовок Окна</h4>
+                </div>
+
+                <div class="modal-body">
+                     {% for post in posts %}
+            <h4>{{ post.title }}</h4>
+                <img src="{{ post.image }} "class="pls" >
+             <img src="../static/bootstrap/img/2.jpg">
+            {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+  <script src="../static/bootstrap/js/jquery-3.2.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../static/bootstrap/js/bootstrap.js"></script>
+
+
+
+<div id="footer">
+  <div class="container">
+    <div class="row centered">
+    <a href="/"><i class="fa fa-twitter"></i></a>
+    <a href="/"><i class="fa fa-facebook"></i></a>
+    <a href="/"><i class="fa fa-vk"></i></a>
+
+    </div>
+  </div>
+</div>
+  </body>
+</html>
+{% endblock   %}
