@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+* h1, * h2, * h3, * h4, * h5, * h6 {
+  color: #ffffff;
+}
+
+body {
+  background: red;
+}
+
+.wrapper {
+  border: solid 1px;
+  background: url(../img/fon.png);
+  margin: 0 auto;
+  height: 914px;
+  width: 1000px;
+}
+
+.container {
+  background-color: grey;
+  margin: 60px 170px 100px 170px;
+  height: 754px;
+  width: 662px;
+}
+
+.container .row {
+  height: 250px;
+  background-color: white;
+  margin: 2px 0;
+  display: flex;
+}
+
+.contact {
+  flex: 3;
+  padding: 20px 20px;
+}
+
+.contact ul li {
+  list-style: none;
+  text-transform: uppercase;
+  padding: 5px;
+  border-bottom: solid 2px;
+}
+
+.img-contact {
+  flex: 1;
+  padding: 20px 20px;
+}
+
+.row2 {
+  display: flex;
+  direction-flex: column;
+}
+
+.col {
+  background: url(../img/rou.png);
+  background-position: 10px 10px;
+}
